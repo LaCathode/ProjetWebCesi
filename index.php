@@ -1,4 +1,8 @@
+<?php
+$adresse_ip = $_SERVER['REMOTE_ADDR'];
+?>
 <?php 
+
 
 	echo "test <br>";
 	$user = "root";
