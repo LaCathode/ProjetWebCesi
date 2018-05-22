@@ -1,5 +1,7 @@
 Questionnaire
+
 1)	Parmi les animaux suivants, lequel peut se déplacer le plus rapidement ?
+
 a)	La gazelle
 b)	 le léopard)
 c)	Le guépard
@@ -126,7 +128,7 @@ b)	Espagne Allemagne
 c)	Russie Arabie saoudite
 d)	Turquie Arménie 
 
-d)	Quels sont les logiciels de la suite adobe ?
+20)	Quels sont les logiciels de la suite adobe ?
 
 a)	InDesign
 b)	Photoshop
