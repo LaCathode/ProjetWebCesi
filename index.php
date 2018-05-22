@@ -1,4 +1,5 @@
 <?php
+
 $adresse_ip = $_SERVER['REMOTE_ADDR'];
 
 function get_ip() {
@@ -15,6 +16,11 @@ function get_ip() {
 		return (isset($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : '');
 	}
 }
+
+
+// Afficher l'adresse IP
+echo 'Adresse IP du visiteur : '.get_ip();
+
 
 ?>
 <?php 
