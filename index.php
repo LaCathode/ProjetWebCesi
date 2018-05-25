@@ -21,7 +21,7 @@ function get_ip() {
 }
 
 
-// Afficher l'adresse IP
+// 1Afficher l'adresse IP
 echo 'Adresse IP du visiteur : '.get_ip();
 */
 
