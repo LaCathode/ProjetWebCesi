@@ -1,5 +1,8 @@
-<?php
+<!DOCTYPE html>
 
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<?php
+/*
 $adresse_ip = $_SERVER['REMOTE_ADDR'];
 
 function get_ip() {
@@ -20,29 +23,9 @@ function get_ip() {
 
 // Afficher l'adresse IP
 echo 'Adresse IP du visiteur : '.get_ip();
-
-
-?>
-<?php 
-
-
-	echo "test <br>";
-	$user = "root";
-	$pass = "";
-
-try {
-    $dbh = new PDO('mysql:host=localhost;dbname=projetwebcesi', $user, $pass);
-    foreach($dbh->query('SELECT * from questions') as $row) {
-        print_r($row);
-    }
-    $dbh = null;
-} catch (PDOException $e) {
-    print "Erreur !: " . $e->getMessage() . "<br/>";
-    die();
-};
+*/
 
 ?>
-
 <?php
 
 $max=20;
@@ -64,3 +47,29 @@ print_r($tableau);
 echo '</pre>';
  
 ?>
+
+<?php 
+
+	$user = "root";
+	$pass = "";
+
+$c = 0;
+
+for($q =0; $q < 5; $q++ ) 
+try {
+    $dbh = new PDO('mysql:host=localhost;dbname=projetwebcesi', $user, $pass);
+    foreach($dbh->query('SELECT question  from questions where id_q="'.$tableau[$q].'" and ' ) as $row) {
+        
+        echo "<br>";
+        print_r($row[$c]);
+        echo "<br>";
+
+    }
+    $dbh = null;
+} catch (PDOException $e) {
+    print "Erreur !: " . $e->getMessage() . "<br/>";
+    die();
+};
+
+?>
+
