@@ -21,7 +21,7 @@ function get_ip() {
 }
 
 
-// 1Afficher l'adresse IP
+// Afficher l'adresse IP
 echo 'Adresse IP du visiteur : '.get_ip();
 */
 
@@ -38,6 +38,7 @@ $max=20;
 
 $_SESSION['tab'] = array();
 
+$i = 0;
 while ($i<6)
 
 {
@@ -116,8 +117,10 @@ try {
     if(isset($_POST['valider']) )
     {
         
-        echo $_SESSION['q'];
+        echo $_SESSION['q'];echo $_SESSION['tab'][$_SESSION['q']];
+        echo "<br>";
         $_SESSION['q'] = $_SESSION['q']+1;
-        echo $_SESSION['q'];
+        echo $_SESSION['q'];echo $_SESSION['tab'][$_SESSION['q']];
+
     }
 ?>
