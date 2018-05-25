@@ -33,8 +33,8 @@ echo 'Adresse IP du visiteur : '.get_ip();
 
 if(!isset($_SESSION['tab'])){
 
+$_SESSION['q'] = 0;
 $max=20;
-$i=1;
 
 $_SESSION['tab'] = array();
 
@@ -67,13 +67,16 @@ echo '</pre>';
 
 <?php 
 
-
-
 	$user = "root";
 	$pass = "";
 
 $c = 0;
-$q = 0; 
+if($_SESSION['q']>4){
+
+	$_SESSION['q'] = 0;
+}
+$q = $_SESSION['q'];
+
 
 try {
     $dbh = new PDO('mysql:host=localhost;dbname=projetwebcesi', $user, $pass);
@@ -104,15 +107,17 @@ try {
 
 ?>
 
-<form>
+<form method='post'>
 <button name='valider'>Valider</button>
 </form>
+
 
 <?php
     if(isset($_POST['valider']) )
     {
-        $q++;
-        echo $q;
+        
+        echo $_SESSION['q'];
+        $_SESSION['q'] = $_SESSION['q']+1;
+        echo $_SESSION['q'];
     }
 ?>
-
