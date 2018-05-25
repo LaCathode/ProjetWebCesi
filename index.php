@@ -26,34 +26,47 @@ echo 'Adresse IP du visiteur : '.get_ip();
 */
 
 ?>
+
 <?php
 
-session_start();
+	session_start();
 
-if (session_status() == PHP_SESSION_ACTIVE) {
-  
-}else{
+if(!isset($_SESSION['tab'])){
+
 $max=20;
 $i=1;
 
-$tableau = array();
+$_SESSION['tab'] = array();
+
 while ($i<6)
+
 {
     $image = rand(1, $max);
      
     if (!in_array($image, $tableau)) {
-        $tableau[] = $image;       
+        $_SESSION['tab'][] = $image;       
             $i++;
     }
+ 
+
 }
  
 echo '<pre>';
-print_r($tableau);
+print_r($_SESSION['tab']);
 echo '</pre>';
- }
+   
+}else{
+
+echo '<pre>';
+print_r($_SESSION['tab']);
+echo '</pre>';
+
+ };
+
 ?>
 
 <?php 
+
 
 
 	$user = "root";
@@ -64,37 +77,42 @@ $q = 0;
 
 try {
     $dbh = new PDO('mysql:host=localhost;dbname=projetwebcesi', $user, $pass);
-    foreach($dbh->query('SELECT question  from questions where  questions.id_q="'.$tableau[$q].'"') as $row) {
+    foreach($dbh->query('SELECT question  from questions where  questions.id_q="'.$_SESSION['tab'][$q].'"') as $row) {
         
         echo "<br>";
         print_r($row[$c]);
         echo "<br>";
 
 
-        	foreach($dbh->query('SELECT rep  from questions,reponses where questions.id_q = reponses.id_q and questions.id_q="'.$tableau[$q].'"') as $row) {
+        	foreach($dbh->query('SELECT rep  from questions,reponses where questions.id_q = reponses.id_q and questions.id_q="'.$_SESSION['tab'][$q].'"') as $row) {
         
+
+
         echo "<br>";
         print_r($row[$c]);
         echo "<br>";
-
 
         }
     }
+
     $dbh = null;
+
 } catch (PDOException $e) {
     print "Erreur !: " . $e->getMessage() . "<br/>";
     die();
-}
+};
 
 ?>
+
 <form>
 <button name='valider'>Valider</button>
 </form>
 
 <?php
-    if ( isset($_POST['valider']) )
+    if(isset($_POST['valider']) )
     {
         $q++;
+        echo $q;
     }
 ?>
 
