@@ -20,7 +20,7 @@ echo  $e;echo "<br />";
 
 
 	$user = "root";
-    $pass = "";
+    $pass = "root";
 
 try
 {
